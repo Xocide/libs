@@ -9,10 +9,21 @@
 class Subversion
 {
 	private $repo = NULL;
+	private $version = '0.1';
 	
 	public function __construct($repo)
 	{
 		$this->repo = $repo;
+	}
+	
+	public function get($path)
+	{
+		
+	}
+	
+	public version()
+	{
+		return $this->version;
 	}
 }
 ?>
