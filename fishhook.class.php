@@ -18,19 +18,26 @@
 
 class FishHook
 {
+	private $code = array();
 	/**
 	 * Hook
 	 * Used to fetch plugin code for the specified hook.
 	 */
 	public static function hook($hook)
 	{
+		// Check if it's cached
+		if(isset($this->code[$hook])) return $this->code[$hook];
+		
 		// Fetch the plugin code from the DB.
 		$code = array();
 		$fetch = mysq_query("SELECT * FROM plugin_code WHERE hook='".mysql_real_escape_string($hook)."' AND enabled='1' ORDER BY execorder ASC");
 		while($info = mysql_fetch_array($fetch))
-			$code[] = ($info['code']);
+			$code[] = $info['code'];
+			
+		// Cache it
+		$this->code[$hook] = implode(" /* */ ",$code)
 		
-		return implode(" /* */ ",$code);
+		return $this->code[$hook];
 	}
 }
 ?>
