@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * FishHook 3.0
  * Copyright (C) 2010 Jack Polgar
