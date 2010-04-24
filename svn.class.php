@@ -44,7 +44,7 @@ class Subversion
 		
 			// Loop through the entries
 			$files = array('dirs'=>array(),'files'=>array());
-			$xml = new SimpleXMLElement(contents);
+			$xml = new SimpleXMLElement($contents);
 			foreach($xml->list->entry as $entry)
 			{
 				// Get the entry data
