@@ -26,7 +26,7 @@ class FishHook
 	public static function hook($hook)
 	{
 		// Check if it's cached
-		if(isset($this->code[$hook])) return $this->code[$hook];
+		if(isset(self::$code[$hook])) return self::$code[$hook];
 		
 		// Fetch the plugin code from the DB.
 		$code = array();
@@ -35,9 +35,9 @@ class FishHook
 			$code[] = $info['code'];
 			
 		// Cache it
-		$this->code[$hook] = implode(" /* */ ",$code)
+		self::$code[$hook] = implode(" /* */ ",$code);
 		
-		return $this->code[$hook];
+		return self::$code[$hook];
 	}
 }
 ?>
