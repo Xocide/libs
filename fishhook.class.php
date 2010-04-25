@@ -18,7 +18,7 @@
 
 class FishHook
 {
-	private $code = array();
+	private static $code = array();
 	/**
 	 * Hook
 	 * Used to fetch plugin code for the specified hook.
