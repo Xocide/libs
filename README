@@ -1,0 +1,28 @@
+﻿Integration
+
+Integrating FishHook into scripts is simple. Just place this line of code where you wish a plugin hook to be available.
+
+($hook = FishHook::hook('some_hook')) ? eval($hook) : false;
+
+Just change the hook name "some_hook" to a more detailed name.
+
+---------------------------
+
+Database table
+
+CREATE TABLE `plugin_code` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `hook` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `code` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `execorder` bigint(20) NOT NULL,
+  `enabled` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+---------------------------
+
+Example plugin
+
+INSERT INTO `plugin_code` (`id`, `title`, `hook`, `code`, `execorder`, `enabled`) VALUES
+(1, 'My Plugin', 'some_hook', 'echo "my plugin code";', 0, 1);
